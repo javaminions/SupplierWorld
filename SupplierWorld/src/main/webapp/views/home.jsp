@@ -20,7 +20,7 @@
 			<div class="input-container">
 				<input type="password" required="required" /> <label>Password</label>
 			</div>
-			<input type="submit" class="btn">submit
+			<input type="submit" class="btn" value="submit">
 		</form>
 	</div>
 </body>
