@@ -12,7 +12,7 @@
 		<span class="greeter">Welcome to Supplier World</span>
 	</div>
 	<div class="box">
-		<form action="temp">
+		<form action="login">
 			<span class="text-center">login</span>
 			<div class="input-container">
 				<input type="text" required="required" /> <label>Username</label>

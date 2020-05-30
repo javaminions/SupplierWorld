@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>SupplierWorld</title>
 </head>
 <meta charset="utf-8">
 <title>Supplier Page</title>
@@ -20,11 +21,105 @@
 			</h3>
 
 			<div class="tab">
-				<button class="tablinks" onclick="openChoice(event, 'Orders')">Orders</button>
+				<c:if test="${neworders!=null}">
+					<button class="tablinks" onclick="openChoice(event, 'newOrders')">New!</button>
+				</c:if>
+				<c:if test="${received!=null}">
+					<button class="tablinks" onclick="openChoice(event, 'received')">Received</button>
+				</c:if>
+				<c:if test="${fulfilled!=null}">
+					<button class="tablinks" onclick="openChoice(event, 'fulfilled')">Fulfilled</button>
+				</c:if>
+				<button class="tablinks" onclick="openChoice(event, 'Orders')">All
+					Orders</button>
 				<button class="tablinks" onclick="openChoice(event, 'Stock')">Check
 					Stock</button>
 				<button class="tablinks" onclick="openChoice(event, 'ContactUs')">Contact
 					Us</button>
+			</div>
+
+			<div id=newOrders class="tabcontent">
+				<h3>New Orders</h3>
+				<form>
+					<table>
+						<thead>
+							<tr>
+								<th>Order ID</th>
+								<th>Product ID</th>
+								<th>Quantity</th>
+								<th>Status</th>
+								<th colspan="2">Confirm Quantity</th>
+							</tr>
+						</thead>
+						<c:forEach items="${neworders}" var="o">
+							<tbody>
+
+								<tr>
+									<td>${o.id}</td>
+									<td>${o.productcode}</td>
+									<td>${o.quantity}</td>
+									<td>${o.status}</td>
+									<td><input type="number" name="confirmedQuantity"
+										placeholder="${o.quantity}"></td>
+									<td><input type="submit" value="Confirm"></td>
+								</tr>
+
+							</tbody>
+						</c:forEach>
+
+					</table>
+				</form>
+			</div>
+
+			<div id=received class="tabcontent">
+				<h3>Received</h3>
+				<form action="orderPicked">
+					<table>
+						<thead>
+							<tr>
+								<th>Order ID</th>
+								<th>Product ID</th>
+								<th>Quantity</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${received}" var="o">
+								<tr>
+									<td>${o.id}</td>
+									<td>${o.productcode}</td>
+									<td>${o.quantity}</td>
+									<td>${o.status}</td>
+								</tr>
+								<br>
+							</c:forEach>
+						</tbody>
+					</table>
+				</form>
+			</div>
+
+			<div id=fulfilled class="tabcontent">
+				<h3>Fulfilled</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Order ID</th>
+							<th>Product ID</th>
+							<th>Quantity</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${fulfilled}" var="o">
+							<tr>
+								<td>${o.id}</td>
+								<td>${o.productcode}</td>
+								<td>${o.quantity}</td>
+								<td>${o.status}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 
 			<div id="Orders" class="tabcontent">
@@ -35,22 +130,18 @@
 							<th>Order ID</th>
 							<th>Product ID</th>
 							<th>Quantity</th>
-							<th>Date Ordered</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>101</td>
-							<td>520</td>
-							<td>01-15-2020</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>502</td>
-							<td>100</td>
-							<td>01-19-2020</td>
-						</tr>
+						<c:forEach items="${orders}" var="o">
+							<tr>
+								<td>${o.id}</td>
+								<td>${o.productcode}</td>
+								<td>${o.quantity}</td>
+								<td>${o.status}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -65,14 +156,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>101</td>
-							<td>5910</td>
-						</tr>
-						<tr>
-							<td>202</td>
-							<td>1000</td>
-						</tr>
+						<c:forEach items="${products}" var="p">
+							<tr>
+								<td>${p.id}</td>
+								<td>${p.quantity}</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

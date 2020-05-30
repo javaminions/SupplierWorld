@@ -7,14 +7,14 @@ import javax.persistence.Id;
 public class Supplierstock {
 
 	@Id
-	private int id;
-	private int quantity;
+	public int id;
+	public int quantity;
 
-	public int getProduct_code() {
+	public int getId() {
 		return id;
 	}
 
-	public void setProduct_code(int product_code) {
+	public void setId(int product_code) {
 		this.id = product_code;
 	}
 
