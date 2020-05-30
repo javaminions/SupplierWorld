@@ -9,7 +9,7 @@ public class ConfirmOrderService {
 	
 	public static String confirmOrder(int id, int quantity) {
 		RestTemplate rt = new RestTemplate();
-		String url = "http://localhost:8088/updateQuantity/"+id+"/"+quantity;
+		String url = "http://localhost:8088/orderconfirmation/"+id+"/"+quantity;
 		
 		ResponseEntity<String> response = rt.getForEntity(url, String.class);
 		String confirmation = response.getBody();

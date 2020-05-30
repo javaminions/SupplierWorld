@@ -19,7 +19,9 @@
 			<h3>
 				<a href="home" id="logout">Logout</a>
 			</h3>
-
+			<c:if test="${finalUpdate!=null}">
+				<h3>${finalUpdate}</h3>
+			</c:if>
 			<div class="tab">
 				<c:if test="${neworders!=null}">
 					<button class="tablinks" onclick="openChoice(event, 'newOrders')">New!</button>
@@ -60,13 +62,14 @@
 									<td>${o.quantity}</td>
 									<td>${o.status}</td>
 									<td><input type="submit" value="Confirm"></td>
-
+									<td><input type="hidden" value="${o.productcode}" name="id"></td>
 									<td><input type="hidden" value="${o.id}" name="orderid"></td>
+									<td><input type="hidden" value="${o.quantity}" name="quantity"></td>
 								</tr>
 
 							</tbody>
 						</c:forEach>
-
+					
 					</table>
 				</form>
 			</div>
