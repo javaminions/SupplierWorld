@@ -39,7 +39,7 @@ public class ConfirmOrderController {
 		mv.addObject("received", HomepageInitializer.getReceviedOrders(orders));
 		mv.addObject("fulfilled", HomepageInitializer.getFulfilledOrders(orders));
 		mv.addObject("products", HomepageInitializer.getAllStock(stock));
-		
+		System.out.println("Orderid=" + orderid + " + quantity=" + quantity + " id="+id);
 		return mv;
 	}
 	

@@ -42,18 +42,20 @@
 
 			<div id=newOrders class="tabcontent">
 				<h3>New Orders</h3>
-				<form action="confirmOrder" method="post">
-					<table>
-						<thead>
-							<tr>
-								<th>Order ID</th>
-								<th>Product ID</th>
-								<th>Quantity</th>
-								<th>Status</th>
-								<th>Confirm Quantity</th>
-							</tr>
-						</thead>
-						<c:forEach items="${neworders}" var="o">
+				<c:forEach items="${neworders}" var="o">
+					
+					<form action="confirmOrder" method="post">
+						<table>
+							<thead>
+								<tr>
+									<th>Order ID</th>
+									<th>Product ID</th>
+									<th>Quantity</th>
+									<th>Status</th>
+									<th>Confirm Quantity</th>
+								</tr>
+							</thead>
+
 							<tbody>
 
 								<tr>
@@ -62,16 +64,19 @@
 									<td>${o.quantity}</td>
 									<td>${o.status}</td>
 									<td><input type="submit" value="Confirm"></td>
-									<td><input type="hidden" value="${o.productcode}" name="id"></td>
+									<td><input type="hidden" value="${o.productcode}"
+										name="id"></td>
 									<td><input type="hidden" value="${o.id}" name="orderid"></td>
-									<td><input type="hidden" value="${o.quantity}" name="quantity"></td>
+									<td><input type="hidden" value="${o.quantity}"
+										name="quantity"></td>
 								</tr>
 
 							</tbody>
-						</c:forEach>
-					
-					</table>
-				</form>
+
+
+						</table>
+					</form>
+				</c:forEach>
 			</div>
 
 			<div id=received class="tabcontent">
