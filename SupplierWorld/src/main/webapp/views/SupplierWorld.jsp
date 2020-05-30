@@ -60,6 +60,7 @@
 									<td>${o.quantity}</td>
 									<td>${o.status}</td>
 									<td><input type="submit" value="Confirm"></td>
+
 									<td><input type="hidden" value="${o.id}" name="orderid"></td>
 								</tr>
 
