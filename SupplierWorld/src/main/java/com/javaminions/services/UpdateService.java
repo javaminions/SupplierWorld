@@ -33,7 +33,7 @@ public class UpdateService {
 			}
 		}
 		
-		product.setQuantity(product.getQuantity()+quantity);
+		product.setQuantity(product.getQuantity()-quantity);
 		s.save(product);
 		return "Updated order id"+order.getId()+ " status to FULFILLED. \nUpdated Product id" +product.getId()+ " with stock: "+product.getQuantity();
 	}
