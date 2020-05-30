@@ -40,7 +40,7 @@
 
 			<div id=newOrders class="tabcontent">
 				<h3>New Orders</h3>
-				<form>
+				<form action="confirmOrder" method="post">
 					<table>
 						<thead>
 							<tr>
@@ -48,7 +48,7 @@
 								<th>Product ID</th>
 								<th>Quantity</th>
 								<th>Status</th>
-								<th colspan="2">Confirm Quantity</th>
+								<th>Confirm Quantity</th>
 							</tr>
 						</thead>
 						<c:forEach items="${neworders}" var="o">
@@ -59,9 +59,8 @@
 									<td>${o.productcode}</td>
 									<td>${o.quantity}</td>
 									<td>${o.status}</td>
-									<td><input type="number" name="confirmedQuantity"
-										placeholder="${o.quantity}"></td>
 									<td><input type="submit" value="Confirm"></td>
+									<td><input type="hidden" value="${o.id}" name="orderid"></td>
 								</tr>
 
 							</tbody>
