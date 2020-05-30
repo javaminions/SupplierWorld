@@ -12,13 +12,15 @@
 		<span class="greeter">Welcome to Supplier World</span>
 	</div>
 	<div class="box">
-		<form action="login">
+		<form action="login" method="post">
 			<span class="text-center">login</span>
+			<div class="message">${message}</div>
+			<br>
 			<div class="input-container">
-				<input type="text" required="required" /> <label>Username</label>
+				<input type="text" required="required" name="username" /> <label>Username</label>
 			</div>
 			<div class="input-container">
-				<input type="password" required="required" /> <label>Password</label>
+				<input type="password" required="required" name="password" /> <label>Password</label>
 			</div>
 			<input type="submit" class="btn" value="submit">
 		</form>
