@@ -16,8 +16,11 @@
 
 		<div class="subcontainer">
 
-			<h3>
-				<a href="home" id="logout">Logout</a>
+			<h3 class="top_buttonh3">
+				<a href="home" class="top_button">Logout</a>
+			</h3>
+			<h3 class="top_buttonh3">
+				<a href="refresh" class="top_button">Refresh</a>
 			</h3>
 			<c:if test="${finalUpdate!=null}">
 				<h3>${finalUpdate}</h3>

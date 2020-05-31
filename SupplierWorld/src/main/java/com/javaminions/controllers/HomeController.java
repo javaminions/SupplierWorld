@@ -2,7 +2,6 @@ package com.javaminions.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,6 +60,17 @@ public class HomeController {
 			request.setAttribute("message", message);
 			mv.setViewName("home");
 		}
+		return mv;
+	}
+	
+	@RequestMapping("refresh")
+	public ModelAndView refresh(ModelAndView mv) {
+		mv.setViewName("SupplierWorld");
+		mv.addObject("neworders", HomepageInitializer.getNewOrders(ordersRepo));
+		mv.addObject("orders", HomepageInitializer.getAllOrders(ordersRepo));
+		mv.addObject("received", HomepageInitializer.getReceviedOrders(ordersRepo));
+		mv.addObject("fulfilled", HomepageInitializer.getFulfilledOrders(ordersRepo));
+		mv.addObject("products", HomepageInitializer.getAllStock(stockRepo));
 		return mv;
 	}
 }

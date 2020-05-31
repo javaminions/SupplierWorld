@@ -62,14 +62,18 @@ body {
   border: 1px solid #ccc;
   border-top: none;
 }
-#logout{
+.top_button{
+  display: inline-block;	
   text-decoration: none;
   padding: 10px;
   background-color: white;
   border-radius: 10px;
   color: black;
 }
-#logout:hover{
+.top_button:hover{
   background-color: rgba(0, 0, 0, 0.01);
   color: white;
+}
+.top_buttonh3 {
+  display:inline-block;
 }
