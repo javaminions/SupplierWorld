@@ -16,6 +16,8 @@ public class UpdateService {
 		List<Supplierorders> orders = o.findAll();
 		List<Supplierstock> allStock = s.findAll();
 		
+		
+		
 		Supplierorders order = new Supplierorders();
 		for (Supplierorders oo : orders) {
 			if(oo.getId()==orderid) {
@@ -26,11 +28,19 @@ public class UpdateService {
 		order.setStatus("FULFILLED");
 		o.save(order);
 		
+		//create boolean to check for order id exists, if not make else that creates new productID based on last + 1 
+		boolean foundId = false;
 		Supplierstock product = new Supplierstock();
 		for (Supplierstock supplierstock : allStock) {
 			if(supplierstock.getId()==id) {
 				product=supplierstock;
+				foundId = true;
 			}
+		}
+		
+		if(!foundId) {
+			product.setId(id);
+			product.setQuantity(1000);
 		}
 		
 		product.setQuantity(product.getQuantity()-quantity);
